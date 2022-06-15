@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "333396777733",
+    "project_id": "notes-nanashi",
+    "storage_bucket": "notes-nanashi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333396777733:android:867dd548aa6e4ec077756c",
+        "android_client_info": {
+          "package_name": "com.example.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333396777733-4uncu3iram62ogddl8jc3hna0bnngj96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDANOxZEJW9Ds8Thv1de6DHLd-VJ_9BHmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333396777733-4uncu3iram62ogddl8jc3hna0bnngj96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
