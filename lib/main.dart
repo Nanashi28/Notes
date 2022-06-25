@@ -21,7 +21,7 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         notesRoute: (context) => const NotesView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
-        newNoteRoute: (context) => NewNoteView(),
+        newNoteRoute: (context) => const NewNoteView(),
       },
     ),
   );
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                 return const LoginView();
               }
             default:
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
           }
         });
   }
