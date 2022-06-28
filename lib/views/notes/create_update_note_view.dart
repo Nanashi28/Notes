@@ -105,7 +105,7 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
                 enableSuggestions: false,
                 maxLines: null,
                 decoration: const InputDecoration(
-                  hintText: 'Start your note here',
+                  hintText: 'Type your note here',
                 ),
               );
             default:
