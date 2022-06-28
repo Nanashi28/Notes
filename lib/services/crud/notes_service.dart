@@ -52,7 +52,7 @@ class NotesService {
     //updates the Database
     final updatesCount = await db.update(noteTable, {
       textColumn: text,
-      isSyncedWithCloudColumn: 0,
+      isSyncedWithCloudColumn: 1,
     });
 
     if (updatesCount == 0) {
@@ -312,12 +312,12 @@ const createUsertable = '''CREATE TABLE IF NOT EXISTS "user" (
 	      "email"	TEXT NOT NULL UNIQUE,
       	PRIMARY KEY("id" AUTOINCREMENT)
       ); ''';
-const createNoteTable = '''CREATE TABLE "notes" (
+const createNoteTable = '''CREATE TABLE IF NOT EXISTS "notes" (
 	"id"	INTEGER NOT NULL,
 	"user_id"	INTEGER NOT NULL,
 	"text"	TEXT,
 	"is_synced_with_cloud"	INTEGER NOT NULL DEFAULT 0,
 	"note_title"	TEXT,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("user_id") REFERENCES "user"("id")
-      );''';
+	FOREIGN KEY("user_id") REFERENCES "user"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);''';
