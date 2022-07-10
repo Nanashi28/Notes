@@ -20,6 +20,7 @@ void main() {
       title: 'Pa Notepad',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
+        fontFamily: 'Belgrano',
       ),
       home: BlocProvider<AuthBloc>(
         create: (context) => AuthBloc(FirebaseAuthProvider()),
@@ -43,7 +44,7 @@ class HomePage extends StatelessWidget {
       if (state.isLoading) {
         LoadingScreen().show(
           context: context,
-          text: state.loadingText ?? 'Pleas wait for a moment',
+          text: state.loadingText ?? 'Please wait for a moment',
         );
       } else {
         LoadingScreen().hide();

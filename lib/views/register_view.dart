@@ -57,8 +57,17 @@ class _RegisterViewState extends State<RegisterView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Enter your desired email and password to start creating your notes!',
+              Container(
+                margin: const EdgeInsets.all(1),
+                padding: const EdgeInsets.all(1),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1.5,
+                  ),
+                ),
+                child: const Text(
+                  'Enter your desired email and password to start creating your notes!',
+                ),
               ),
               TextField(
                 controller: _email,
@@ -80,7 +89,7 @@ class _RegisterViewState extends State<RegisterView> {
               Center(
                 child: Column(
                   children: [
-                    TextButton(
+                    ElevatedButton(
                       onPressed: () async {
                         final email = _email.text;
                         final password = _password.text;
@@ -93,12 +102,15 @@ class _RegisterViewState extends State<RegisterView> {
                       },
                       child: const Text('Register'),
                     ),
-                    TextButton(
+                    OutlinedButton(
                       onPressed: () {
                         context.read<AuthBloc>().add(
                               const AuthEventLogOut(),
                             );
                       },
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(width: 2.0, color: Colors.blue),
+                      ),
                       child: const Text('Already registered? Login Here!'),
                     ),
                   ],

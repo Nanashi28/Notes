@@ -45,6 +45,7 @@ dependencies:
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
+  flutter_launcher_icons: ^0.9.3
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,13 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 
+  fonts:
+   - family: Belgrano
+     fonts:
+       - asset: assets/fonts/Belgrano-Regular.ttf
+
+ 
+ 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

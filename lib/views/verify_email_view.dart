@@ -19,11 +19,20 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
       ),
       body: Column(
         children: [
-          const Text(
-              "We've sent you an Email verification, please open it to verify your account. Please check your spam / junk folder."),
+          Container(
+            margin: const EdgeInsets.all(1),
+            padding: const EdgeInsets.all(1),
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1.5,
+              ),
+            ),
+            child: const Text(
+                "We've sent you an Email verification, please open it to verify your account. Please check your spam / junk folder."),
+          ),
           const Text(
               "If you haven't received an Email verification yet, please press the button below:"),
-          TextButton(
+          ElevatedButton(
             onPressed: () {
               context.read<AuthBloc>().add(
                     const AuthEventSendEmailVerification(),
@@ -31,12 +40,15 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
             },
             child: const Text('Send Email verification'),
           ),
-          TextButton(
+          OutlinedButton(
             onPressed: () {
               context.read<AuthBloc>().add(
                     const AuthEventLogOut(),
                   );
             },
+            style: OutlinedButton.styleFrom(
+              side: const BorderSide(width: 2.0, color: Colors.blue),
+            ),
             child: const Text('Return to Login/Register'),
           ),
         ],

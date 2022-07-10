@@ -57,8 +57,17 @@ class _LoginViewState extends State<LoginView> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const Text(
-                'Please Log in to your account in order to see and create your notes!',
+              Container(
+                margin: const EdgeInsets.all(1.0),
+                padding: const EdgeInsets.all(1.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1.5,
+                  ),
+                ),
+                child: const Text(
+                  'Please Log in to your account in order to see and create your notes!',
+                ),
               ),
               TextField(
                 controller: _email,
@@ -76,7 +85,7 @@ class _LoginViewState extends State<LoginView> {
                 decoration:
                     const InputDecoration(hintText: 'Enter your password here'),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () async {
                   final email = _email.text;
                   final password = _password.text;
@@ -89,20 +98,26 @@ class _LoginViewState extends State<LoginView> {
                 },
                 child: const Text('Login'),
               ),
-              TextButton(
+              OutlinedButton(
                 onPressed: () {
                   context.read<AuthBloc>().add(
                         const AuthEventForgotPassword(),
                       );
                 },
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(width: 2.0, color: Colors.blue),
+                ),
                 child: const Text('Forgot your password?'),
               ),
-              TextButton(
+              OutlinedButton(
                 onPressed: () {
                   context.read<AuthBloc>().add(
                         const AuthEventShouldRegister(),
                       );
                 },
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(width: 2.0, color: Colors.blue),
+                ),
                 child: const Text('Not registered yet? Register here!'),
               )
             ],
