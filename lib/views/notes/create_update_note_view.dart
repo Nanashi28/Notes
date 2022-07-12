@@ -87,6 +87,13 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
         title: title,
       );
     }
+    if (note != null && title.isEmpty) {
+      await _notesService.updateNote(
+        documentId: note.documentId,
+        text: text,
+        title: text,
+      );
+    }
   }
 
   @override
@@ -140,7 +147,7 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
                         autocorrect: false,
                         keyboardType: TextInputType.multiline,
                         enableSuggestions: false,
-                        maxLines: null,
+                        maxLines: 1,
                         decoration: const InputDecoration(
                           hintText: 'Title',
                         ),
