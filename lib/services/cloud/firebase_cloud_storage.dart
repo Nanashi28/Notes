@@ -14,10 +14,25 @@ class FirebaseCloudStorage {
     }
   }
 
+  Future<void> noUpdate({
+    required String documentId,
+    required String text,
+    required String title,
+  }) async {
+    try {
+      await notes.doc(documentId).update({
+        textFieldName: text,
+        noteTitleFieldName: title,
+      });
+    } catch (e) {
+      throw CouldNotUpdateNoteException();
+    }
+  }
+
   Future<void> updateNote({
     required String documentId,
     required String text,
-    required String? title,
+    required String title,
   }) async {
     try {
       await notes.doc(documentId).update({

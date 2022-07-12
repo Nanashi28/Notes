@@ -80,14 +80,19 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
     final note = _note;
     final text = _textController.text;
     final title = _titleController.text;
-    if (note != null && text.isNotEmpty) {
+    if (note != null && note.text == text && note.title == title) {
+      await _notesService.noUpdate(
+        documentId: note.documentId,
+        text: text,
+        title: title,
+      );
+    } else if (note != null && text.isNotEmpty) {
       await _notesService.updateNote(
         documentId: note.documentId,
         text: text,
         title: title,
       );
-    }
-    if (note != null && title.isEmpty) {
+    } else if (note != null && title.isEmpty) {
       await _notesService.updateNote(
         documentId: note.documentId,
         text: text,
