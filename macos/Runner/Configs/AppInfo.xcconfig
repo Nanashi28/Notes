@@ -8,7 +8,7 @@
 PRODUCT_NAME = notes
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.notes
+PRODUCT_BUNDLE_IDENTIFIER = com.Nanashii.notes
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2022 com.Nanashii. All rights reserved.

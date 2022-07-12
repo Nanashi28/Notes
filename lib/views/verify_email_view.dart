@@ -17,41 +17,43 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
       appBar: AppBar(
         title: const Text('Verify Email'),
       ),
-      body: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.all(1),
-            padding: const EdgeInsets.all(1),
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 1.5,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(1),
+              padding: const EdgeInsets.all(1),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1.5,
+                ),
               ),
+              child: const Text(
+                  "We've sent you an Email verification, please open it to verify your account. Please check your spam / junk folder."),
             ),
-            child: const Text(
-                "We've sent you an Email verification, please open it to verify your account. Please check your spam / junk folder."),
-          ),
-          const Text(
-              "If you haven't received an Email verification yet, please press the button below:"),
-          ElevatedButton(
-            onPressed: () {
-              context.read<AuthBloc>().add(
-                    const AuthEventSendEmailVerification(),
-                  );
-            },
-            child: const Text('Send Email verification'),
-          ),
-          OutlinedButton(
-            onPressed: () {
-              context.read<AuthBloc>().add(
-                    const AuthEventLogOut(),
-                  );
-            },
-            style: OutlinedButton.styleFrom(
-              side: const BorderSide(width: 2.0, color: Colors.blue),
+            const Text(
+                "If you haven't received an Email verification yet, please press the button below:"),
+            ElevatedButton(
+              onPressed: () {
+                context.read<AuthBloc>().add(
+                      const AuthEventSendEmailVerification(),
+                    );
+              },
+              child: const Text('Send Email verification'),
             ),
-            child: const Text('Return to Login/Register'),
-          ),
-        ],
+            OutlinedButton(
+              onPressed: () {
+                context.read<AuthBloc>().add(
+                      const AuthEventLogOut(),
+                    );
+              },
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(width: 2.0, color: Colors.blue),
+              ),
+              child: const Text('Return to Login/Register'),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.notes">
+    package="com.Nanashii.notes">
    <application
         android:label="PaNotePad"
         android:name="${applicationName}"

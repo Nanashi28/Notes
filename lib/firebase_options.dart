@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '333396777733',
     projectId: 'notes-nanashi',
     storageBucket: 'notes-nanashi.appspot.com',
-    iosClientId: '333396777733-kkqv2lgvcfj3micen9on0i5gipfphroh.apps.googleusercontent.com',
-    iosBundleId: 'com.example.notes',
+    iosClientId:
+        '333396777733-kkqv2lgvcfj3micen9on0i5gipfphroh.apps.googleusercontent.com',
+    iosBundleId: 'com.Nanashii.notes',
   );
 }

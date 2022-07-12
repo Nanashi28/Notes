@@ -54,69 +54,72 @@ class _RegisterViewState extends State<RegisterView> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.all(1),
-                padding: const EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1.5,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(1),
+                  padding: const EdgeInsets.all(1),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1.5,
+                    ),
+                  ),
+                  child: const Text(
+                    'Enter your desired email and password to start creating your notes!',
                   ),
                 ),
-                child: const Text(
-                  'Enter your desired email and password to start creating your notes!',
+                TextField(
+                  controller: _email,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  autofocus: true,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration:
+                      const InputDecoration(hintText: 'Enter your email here'),
                 ),
-              ),
-              TextField(
-                controller: _email,
-                enableSuggestions: false,
-                autocorrect: false,
-                autofocus: true,
-                keyboardType: TextInputType.emailAddress,
-                decoration:
-                    const InputDecoration(hintText: 'Enter your email here'),
-              ),
-              TextField(
-                controller: _password,
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration:
-                    const InputDecoration(hintText: 'Enter your password here'),
-              ),
-              Center(
-                child: Column(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () async {
-                        final email = _email.text;
-                        final password = _password.text;
-                        context.read<AuthBloc>().add(
-                              AuthEventRegister(
-                                email,
-                                password,
-                              ),
-                            );
-                      },
-                      child: const Text('Register'),
-                    ),
-                    OutlinedButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                              const AuthEventLogOut(),
-                            );
-                      },
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(width: 2.0, color: Colors.blue),
+                TextField(
+                  controller: _password,
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  decoration: const InputDecoration(
+                      hintText: 'Enter your password here'),
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () async {
+                          final email = _email.text;
+                          final password = _password.text;
+                          context.read<AuthBloc>().add(
+                                AuthEventRegister(
+                                  email,
+                                  password,
+                                ),
+                              );
+                        },
+                        child: const Text('Register'),
                       ),
-                      child: const Text('Already registered? Login Here!'),
-                    ),
-                  ],
+                      OutlinedButton(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(
+                                const AuthEventLogOut(),
+                              );
+                        },
+                        style: OutlinedButton.styleFrom(
+                          side:
+                              const BorderSide(width: 2.0, color: Colors.blue),
+                        ),
+                        child: const Text('Already registered? Login Here!'),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
