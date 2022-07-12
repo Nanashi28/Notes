@@ -17,11 +17,13 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
   CloudNote? _note;
   late final FirebaseCloudStorage _notesService;
   late final TextEditingController _textController;
+  late final TextEditingController _titleController;
 
   @override
   void initState() {
     _notesService = FirebaseCloudStorage();
     _textController = TextEditingController();
+    _titleController = TextEditingController();
     super.initState();
   }
 
@@ -31,9 +33,11 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
       return;
     }
     final text = _textController.text;
+    final title = _titleController.text;
     await _notesService.updateNote(
       documentId: note.documentId,
       text: text,
+      title: title,
     );
   }
 
@@ -72,10 +76,12 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
   void _saveNoteIfTextNotEmpty() async {
     final note = _note;
     final text = _textController.text;
+    final title = _titleController.text;
     if (note != null && text.isNotEmpty) {
       await _notesService.updateNote(
         documentId: note.documentId,
         text: text,
+        title: title,
       );
     }
   }
@@ -113,14 +119,41 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               _setupTextControllerListener();
-              return TextField(
-                controller: _textController,
-                autocorrect: false,
-                keyboardType: TextInputType.multiline,
-                enableSuggestions: false,
-                maxLines: null,
-                decoration: const InputDecoration(
-                  hintText: 'Type your note here',
+              return Padding(
+                padding: const EdgeInsets.all(0.5),
+                child: DecoratedBox(
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.blueGrey),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _titleController,
+                        autocorrect: false,
+                        keyboardType: TextInputType.multiline,
+                        enableSuggestions: false,
+                        maxLines: null,
+                        decoration: const InputDecoration(
+                          hintText: 'Title',
+                        ),
+                      ),
+                      TextField(
+                        controller: _textController,
+                        autocorrect: false,
+                        keyboardType: TextInputType.multiline,
+                        enableSuggestions: false,
+                        maxLines: null,
+                        decoration: const InputDecoration(
+                          hintText: 'Type your note here',
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             default:

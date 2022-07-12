@@ -20,7 +20,9 @@ void main() {
       title: 'Pa Notepad',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
+        brightness: Brightness.light,
         fontFamily: 'Belgrano',
+        scaffoldBackgroundColor: const Color.fromARGB(255, 213, 238, 250),
       ),
       home: BlocProvider<AuthBloc>(
         create: (context) => AuthBloc(FirebaseAuthProvider()),
