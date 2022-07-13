@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:notes/services/auth/auth_service.dart';
+import 'package:notes/services/cloud/cloud_storage_constants.dart';
 import 'package:notes/utilities/generics/get_arguments.dart';
 import 'package:notes/services/cloud/cloud_note.dart';
 import 'package:notes/services/cloud/firebase_cloud_storage.dart';
@@ -32,20 +34,21 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
     if (note == null) {
       return;
     }
-    final text = _textController.text;
     final title = _titleController.text;
+    final text = _textController.text;
+
     await _notesService.updateNote(
       documentId: note.documentId,
-      text: text,
       title: title,
+      text: text,
     );
   }
 
   void _setupTextControllerListener() {
-    _textController.removeListener(_textControllerListener);
-    _textController.addListener(_textControllerListener);
     _titleController.removeListener(_textControllerListener);
     _titleController.addListener(_textControllerListener);
+    _textController.removeListener(_textControllerListener);
+    _textController.addListener(_textControllerListener);
   }
 
   Future<CloudNote> createOrGetExistingNote(BuildContext context) async {
@@ -53,8 +56,9 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
 
     if (widgetNote != null) {
       _note = widgetNote;
-      _textController.text = widgetNote.text;
       _titleController.text = widgetNote.title;
+      _textController.text = widgetNote.text;
+
       return widgetNote;
     }
 
@@ -78,25 +82,26 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
 
   void _saveNoteIfTextNotEmpty() async {
     final note = _note;
-    final text = _textController.text;
     final title = _titleController.text;
-    if (note != null && note.text == text && note.title == title) {
+    final text = _textController.text;
+
+    if (note != null && note.title == title && note.text == text) {
       await _notesService.noUpdate(
         documentId: note.documentId,
-        text: text,
         title: title,
-      );
-    } else if (note != null && text.isNotEmpty) {
-      await _notesService.updateNote(
-        documentId: note.documentId,
         text: text,
-        title: title,
       );
     } else if (note != null && title.isEmpty) {
       await _notesService.updateNote(
         documentId: note.documentId,
-        text: text,
         title: text,
+        text: text,
+      );
+    } else if (note != null && text.isNotEmpty) {
+      await _notesService.updateNote(
+        documentId: note.documentId,
+        title: title,
+        text: text,
       );
     }
   }
