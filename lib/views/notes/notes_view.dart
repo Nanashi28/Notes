@@ -34,6 +34,11 @@ class _NotesViewState extends State<NotesView> {
         title: const Text('Your Notes'),
         actions: [
           IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(searchNoteRoute);
+              },
+              icon: const Icon(Icons.search_outlined)),
+          IconButton(
             onPressed: () {
               Navigator.of(context).pushNamed(
                 createOrUpdateNoteRoute,

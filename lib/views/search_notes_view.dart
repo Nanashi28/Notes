@@ -8,13 +8,42 @@ class SearchNoteView extends StatefulWidget {
 }
 
 class _SearchNoteViewState extends State<SearchNoteView> {
+  late final TextEditingController _search;
+  @override
+  void initState() {
+    _search = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _search.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Note Search'),
+        leading: const BackButton(
+          color: Colors.white60,
+        ),
+        title: TextField(
+          controller: _search,
+          enableSuggestions: false,
+          autocorrect: false,
+          maxLines: 1,
+          autofocus: true,
+          decoration: const InputDecoration(
+            hintText: 'Search Note....',
+          ),
+        ),
       ),
-      body: const Text('still testing'),
+      body: const Center(
+        child: Text(
+          'This feature is still in development. Please wait, Thank You!',
+        ),
+      ),
     );
   }
 }

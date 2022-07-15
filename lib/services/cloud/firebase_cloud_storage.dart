@@ -23,6 +23,7 @@ class FirebaseCloudStorage {
       await notes.doc(documentId).update({
         noteTitleFieldName: title,
         textFieldName: text,
+        searchKeywords: searchNote(title),
       });
     } catch (e) {
       throw CouldNotUpdateNoteException();
@@ -39,6 +40,7 @@ class FirebaseCloudStorage {
         noteTitleFieldName: title,
         textFieldName: text,
         dateModified: Timestamp.now(),
+        searchKeywords: searchNote(title),
       });
     } catch (e) {
       throw CouldNotUpdateNoteException();
@@ -76,6 +78,7 @@ class FirebaseCloudStorage {
       noteTitleFieldName: '',
       textFieldName: '',
       dateModified: Timestamp.now(),
+      searchKeywords: searchNote(noteTitleFieldName),
     });
     final fetchedNote = await document.get();
 
@@ -85,6 +88,16 @@ class FirebaseCloudStorage {
       title: '',
       text: '',
     );
+  }
+
+  searchNote(String noteTitleFieldName) {
+    List<String> noteSearchList = [];
+    String temp = "";
+    for (int i = 0; i < noteTitleFieldName.length; i++) {
+      temp = temp + noteTitleFieldName[i];
+      noteSearchList.add(temp);
+    }
+    return noteSearchList;
   }
 
   static final FirebaseCloudStorage _shared =
