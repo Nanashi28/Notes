@@ -157,6 +157,7 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
                         enableSuggestions: false,
                         maxLines: 1,
                         decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
                           hintText: 'Title',
                         ),
                       ),
@@ -167,6 +168,7 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
                         enableSuggestions: false,
                         maxLines: null,
                         decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
                           hintText: 'Type your note here',
                         ),
                       ),

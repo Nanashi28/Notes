@@ -1,7 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:notes/services/cloud/cloud_note.dart';
+import 'package:notes/services/cloud/cloud_storage_constants.dart';
+
+typedef NoteSearching = void Function(CloudNote note);
 
 class SearchNoteView extends StatefulWidget {
-  const SearchNoteView({Key? key}) : super(key: key);
+  const SearchNoteView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<SearchNoteView> createState() => _SearchNoteViewState();
@@ -9,6 +16,7 @@ class SearchNoteView extends StatefulWidget {
 
 class _SearchNoteViewState extends State<SearchNoteView> {
   late final TextEditingController _search;
+
   @override
   void initState() {
     _search = TextEditingController();
@@ -35,15 +43,13 @@ class _SearchNoteViewState extends State<SearchNoteView> {
           maxLines: 1,
           autofocus: true,
           decoration: const InputDecoration(
-            hintText: 'Search Note....',
+            contentPadding: EdgeInsets.all(10),
+            hintText: 'Search for the title of your note....',
           ),
         ),
       ),
-      body: const Center(
-        child: Text(
-          'This feature is still in development. Please wait, Thank You!',
-        ),
-      ),
+      body: const Text(
+          'This feature is still in development, please stay tuned! Thank You!'),
     );
   }
 }
