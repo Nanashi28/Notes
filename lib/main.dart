@@ -20,7 +20,7 @@ void main() {
     MaterialApp(
       title: 'Pa Notepad',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.lightBlue,
         brightness: Brightness.light,
         fontFamily: 'Belgrano',
         scaffoldBackgroundColor: const Color.fromARGB(255, 213, 238, 250),
