@@ -137,42 +137,44 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               _setupTextControllerListener();
-              return Padding(
-                padding: const EdgeInsets.all(0.5),
-                child: DecoratedBox(
-                  decoration: const ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.blueGrey),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(0.5),
+                  child: DecoratedBox(
+                    decoration: const ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.blueGrey),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
                       ),
                     ),
-                  ),
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: _titleController,
-                        autocorrect: false,
-                        keyboardType: TextInputType.multiline,
-                        enableSuggestions: false,
-                        maxLines: 1,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: 'Title',
+                    child: Column(
+                      children: [
+                        TextField(
+                          controller: _titleController,
+                          autocorrect: false,
+                          keyboardType: TextInputType.multiline,
+                          enableSuggestions: false,
+                          maxLines: 1,
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.all(10),
+                            hintText: 'Title',
+                          ),
                         ),
-                      ),
-                      TextField(
-                        controller: _textController,
-                        autocorrect: false,
-                        keyboardType: TextInputType.multiline,
-                        enableSuggestions: false,
-                        maxLines: null,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: 'Type your note here',
+                        TextField(
+                          controller: _textController,
+                          autocorrect: false,
+                          keyboardType: TextInputType.multiline,
+                          enableSuggestions: false,
+                          maxLines: null,
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.all(10),
+                            hintText: 'Type your note here',
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
